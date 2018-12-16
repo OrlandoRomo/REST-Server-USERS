@@ -25,7 +25,7 @@ app.post('/login', (req, res) => {
         });
         let token = jwt.sign({
             usuario: usuarioFound
-        }, 'secret', { expiresIn: 60 * 60 * 24 * 30 });
+        }, process.env.SEED_TOKEN, { expiresIn: 60 * 60 * 24 * 30 });
         res.json({
             ok: true,
             usuario: usuarioFound,
