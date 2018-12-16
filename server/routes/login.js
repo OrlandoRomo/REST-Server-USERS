@@ -32,7 +32,5 @@ app.post('/login', (req, res) => {
             token
         });
     })
-
 });
-
 module.exports = app;

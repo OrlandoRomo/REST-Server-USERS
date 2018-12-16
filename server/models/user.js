@@ -31,7 +31,7 @@ let usuarioSchema = new Schema({
         enum: validRoles
     },
     estado: {
-        type: Boolean,
+        type: Boolean, 
         default: true
     },
     google: {
