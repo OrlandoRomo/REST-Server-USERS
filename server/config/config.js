@@ -13,3 +13,8 @@ else
 
 
 process.env.URL_DB = urlDB;
+
+//ExpiresIn and Seed
+process.env.CADUCIDAD_TOKEN = 60*60*24*30;
+
+process.env.SEED_TOKEN = process.env.SEED_TOKEN || 'secret'
