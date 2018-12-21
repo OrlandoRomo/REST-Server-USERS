@@ -15,7 +15,7 @@ else
 process.env.URL_DB = urlDB;
 
 //ExpiresIn and Seed
-process.env.CADUCIDAD_TOKEN = 60*60*24*30;
+process.env.CADUCIDAD_TOKEN = '48h';
 process.env.SEED_TOKEN = process.env.SEED_TOKEN || 'secret';
 
 //Google OAuth Client ID

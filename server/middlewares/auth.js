@@ -14,14 +14,14 @@ let checkToken = (req, res, next) => {
 };
 
 let checkRoleUser = (req, res, next) => {
-    let role = req.usuario.rol;
-    if (role === 'ADMIN_ROLE') {
+    let rol = req.usuario.rol;
+    if (rol === 'ADMIN_ROLE') {
         next();
-    }else{
+    } else {
         return res.json({
             ok: false,
-            err:{
-                message:'Usuario no es administrador'
+            err: {
+                message: 'Usuario no es administrador'
             }
         });
     }
