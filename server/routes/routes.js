@@ -32,7 +32,7 @@ app.get('/usuario', checkToken, (req, res) => {
         });
 });
 
-app.post('/usuario', (req, res) => {
+app.post('/usuario', [checkToken,checkRoleUser], (req, res) => {
     //Save all body from the request
     let body = req.body;
     //Setting the attributes for a new Usuario
