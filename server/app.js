@@ -8,6 +8,7 @@ const app = require('./routes/index');
 const mongoose = require('mongoose');
 
 
+console.log(process.env.URL_DB);
 
 mongoose.connect(process.env.URL_DB,{useNewUrlParser:true},(err,res)=>{
     if(err) throw err
