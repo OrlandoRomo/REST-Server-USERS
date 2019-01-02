@@ -5,18 +5,18 @@ let Categoria = require('../models/category');
 //GET Category
 app.get('/category', checkToken, (req, res) => {
     Categoria.find({})
-    .sort('descripcion')
-    .populate('usuario','nombre email rol')
-    .exec((err, category) => {
-        if (err) return res.status(400).json({
-            ok: false,
-            err
+        .sort('descripcion')
+        .populate('usuario', 'nombre email rol')
+        .exec((err, category) => {
+            if (err) return res.status(400).json({
+                ok: false,
+                err
+            });
+            res.json({
+                ok: true,
+                categories: category
+            });
         });
-        res.json({
-            ok: true,
-            categories: category
-        });
-    });
 });
 //GET Category by ID
 app.get('/category/:id', checkToken, (req, res) => {
@@ -55,9 +55,9 @@ app.post('/category', checkToken, (req, res) => {
 app.put('/category/:id', checkToken, (req, res) => {
     let body = req.body.descripcion;
     let id = req.params.id;
-    console.log(id,body);
-        
-    Categoria.findByIdAndUpdate(id,{descripcion: body}, { new: true, }, (err, updateCategory) => {
+    console.log(id, body);
+
+    Categoria.findByIdAndUpdate(id, { descripcion: body }, { new: true, }, (err, updateCategory) => {
         if (err) return res.status(400).json({
             ok: false,
             err
@@ -78,7 +78,7 @@ app.delete('/category/:id', [checkToken, checkRoleUser], (req, res) => {
         res.json({
             ok: true,
             category: deleteCategory,
-            message:'Categoria Borrado'
+            message: 'Categoria Borrado'
         })
     });
 });

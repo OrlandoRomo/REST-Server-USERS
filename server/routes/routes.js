@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const _ = require('underscore');
-const { checkToken,checkRoleUser } = require('../middlewares/auth');
+const { checkToken, checkRoleUser } = require('../middlewares/auth');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -32,7 +32,7 @@ app.get('/usuario', checkToken, (req, res) => {
         });
 });
 
-app.post('/usuario', [checkToken,checkRoleUser], (req, res) => {
+app.post('/usuario', [checkToken, checkRoleUser], (req, res) => {
     //Save all body from the request
     let body = req.body;
     //Setting the attributes for a new Usuario
@@ -56,7 +56,7 @@ app.post('/usuario', [checkToken,checkRoleUser], (req, res) => {
     })
 });
 
-app.put('/usuario/:id', [checkToken,checkRoleUser], (req, res) => {
+app.put('/usuario/:id', [checkToken, checkRoleUser], (req, res) => {
     //Getting the id from the URL
     let id = req.params.id;
     //Using only the fileds nombre,email,img,rol,estado in body
@@ -83,7 +83,7 @@ app.put('/usuario/:id', [checkToken,checkRoleUser], (req, res) => {
 
 });
 
-app.delete('/usuario/:id', [checkToken,checkRoleUser],(req, res) => {
+app.delete('/usuario/:id', [checkToken, checkRoleUser], (req, res) => {
     let id = req.params.id;
     Usuario.findOneAndUpdate(id, { estado: false }, { new: true, context: 'query' }, (err, usuarioDelete) => {
         if (err) return res.json({
