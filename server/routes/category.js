@@ -6,7 +6,7 @@ let Categoria = require('../models/category');
 app.get('/category', checkToken, (req, res) => {
     Categoria.find({})
         .sort('descripcion')
-        .populate('usuario', 'nombre email rol')
+        .populate('usuario', 'nombre email role')
         .exec((err, category) => {
             if (err) return res.status(400).json({
                 ok: false,
